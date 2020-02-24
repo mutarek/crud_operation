@@ -1,18 +1,19 @@
 package com.example.demo.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Blogs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column
     private String title;
+    @Column
     private String img;
+    @Column
     private String loc;
+    @Column
     private String desc;
 
     public Blogs() {

@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api")
+@RequestMapping(value = "/v1")
 public class BlogsControler {
     @Autowired
     BlogsRepository blogsRepository;
 
-    @GetMapping(value = "/allblogs")
+    @GetMapping(value = "/api")
     public List<Blogs> getallblogs() {
         return blogsRepository.findAll();
     }
 
-    @PostMapping(value = "/allblogs")
+    @PostMapping(value = "/api")
     public ResponseEntity<Blogs> createABlogs(@RequestBody Blogs blogs) {
         Blogs blogs1 = blogsRepository.save(blogs);
         return new ResponseEntity<Blogs>(blogs1, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @DeleteMapping("/allblogs/{id}")
+    @DeleteMapping("/api/{id}")
     void deleteEmployee(@PathVariable int id) {
         blogsRepository.deleteById(id);
     }
 
-    @PutMapping("/allblogs/{id}")
+    @PutMapping("/api/{id}")
     Blogs replaceEmployee(@RequestBody Blogs newEmployee, @PathVariable int id) {
 
         return blogsRepository.findById(id)
